@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Calculator {
@@ -27,6 +29,23 @@ public class Calculator {
             default:
                 throw new IllegalArgumentException("Invalid operator");
         }
+    }
+    // ตัด 0 ที่ไม่ใช่เกรด ตัดเศษที่ไม่ใช่ใจ
+    public static String autoFormat(double value) {
+    BigDecimal bd = BigDecimal.valueOf(value).stripTrailingZeros();
+
+    // ถ้าเป็นจำนวนเต็ม
+    if (bd.scale() <= 0) {
+        return bd.toPlainString();
+    }
+
+    // ถ้ามีทศนิยมเกิน 3 ตำแหน่งจะปัด
+    if (bd.scale() > 3) {
+        bd = bd.setScale(3, RoundingMode.HALF_UP)
+               .stripTrailingZeros();
+    }
+
+    return bd.toPlainString();
     }
 
     public static void main(String[] args) {
@@ -59,7 +78,8 @@ public class Calculator {
 
             // ประมวลผล
             Calculator calc = new Calculator(n1, n2, op);
-            System.out.println("Result: " + calc.calculate());
+            double result = calc.calculate();
+            System.out.println("Result: " + Calculator.autoFormat(result));
 
         } catch (ArithmeticException e) {
             System.out.println("Math Error: " + e.getMessage());
