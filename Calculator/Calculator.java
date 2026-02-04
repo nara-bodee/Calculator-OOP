@@ -75,7 +75,7 @@ public class Calculator {
                 System.out.print("\nEnter first number: ");
                 while (!sc.hasNextDouble()) {
                     System.out.println("Error: Please enter a valid number.");
-                    sc.next(); // clear buffer
+                    sc.nextLine();
                 }
                 double n1 = sc.nextDouble();
 
@@ -93,7 +93,7 @@ public class Calculator {
                     System.out.print("Enter second number: ");
                     while (!sc.hasNextDouble()) {
                         System.out.println("Error: Please enter a valid number.");
-                        sc.next(); // clear buffer
+                        sc.nextLine();
                     }
                     n2 = sc.nextDouble();
                 } else {
