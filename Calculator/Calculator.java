@@ -73,7 +73,7 @@ public class Calculator {
             System.out.print("Enter second number: ");
             while (!sc.hasNextDouble()) {
                 System.out.println("Error: Please enter a valid number.");
-                sc.next(); // clear buffer
+                sc.nextLine();
             }
             double n2 = sc.nextDouble();
 
