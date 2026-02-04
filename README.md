@@ -9,7 +9,7 @@
 
 ทีมของเราใช้ **Gitflow Workflow** ในการพัฒนา เพื่อแยกส่วนการทำงานระหว่างฟีเจอร์ใหม่, การแก้ไขบั๊ก และเวอร์ชันพร้อมใช้งานอย่างชัดเจน:
 
-![Git Workflow Diagram](./images/git-workflow.png)
+![Git Workflow Diagram](./image/workFlow.png)
 *(แผนผังแสดง Workflow การทำงานของทีม)*
 
 ### โครงสร้าง Branch
