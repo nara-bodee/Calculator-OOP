@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList; // [NEW] เพิ่ม Import ArrayList
-import java.util.List; // [NEW] เพิ่ม Import List
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Calculator {
@@ -66,7 +66,7 @@ public class Calculator {
                 System.out.print("\nEnter first number: ");
                 while (!sc.hasNextDouble()) {
                     System.out.println("Error: Please enter a valid number.");
-                    sc.nextLine();
+                    sc.next();
                 }
                 double n1 = sc.nextDouble();
 
@@ -84,19 +84,17 @@ public class Calculator {
                     System.out.print("Enter second number: ");
                     while (!sc.hasNextDouble()) {
                         System.out.println("Error: Please enter a valid number.");
-                        sc.nextLine();
+                        sc.next();
                     }
                     n2 = sc.nextDouble();
                 }
 
-                // ประมวลผล
                 Calculator calc = new Calculator(n1, n2, op);
                 double result = calc.calculate();
                 String formattedResult = Calculator.autoFormat(result);
 
                 System.out.println("Result: " + formattedResult);
 
-                // [NEW] บันทึกประวัติลง List
                 String equation;
                 if (op == 's' || op == 'S') {
                     equation = "sqrt(" + Calculator.autoFormat(n1) + ") = " + formattedResult;
@@ -112,7 +110,6 @@ public class Calculator {
                 System.out.println("An unexpected error occurred.");
             }
 
-            // [NEW] ปรับปรุงลูปถามว่าจะไปต่อไหม ให้รองรับตัวเลือก 'h' (History)
             while (true) {
                 System.out.print("\nDo you want to calculate again? (y/n) or view history (h): ");
                 String response = sc.next().toLowerCase();
@@ -127,13 +124,13 @@ public class Calculator {
                             System.out.println((i + 1) + ". " + historyLog.get(i));
                         }
                     }
-                    // วนลูปถามใหม่ ไม่ break
+
                 } else if (response.equals("y") || response.equals("yes")) {
                     continueCalculation = true;
-                    break; // ออกจากลูปถาม ไปเริ่มคำนวณใหม่
+                    break;
                 } else if (response.equals("n") || response.equals("no")) {
                     continueCalculation = false;
-                    break; // ออกจากลูปถาม และจบโปรแกรม
+                    break;
                 } else {
                     System.out.println("Invalid input. Please type 'y', 'n', or 'h'.");
                 }
